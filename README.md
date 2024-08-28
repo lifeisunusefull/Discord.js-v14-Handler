@@ -23,7 +23,7 @@
    <a href="https://github.com/lifeisunusefull/Discord.js-v14-Handler/fork">
       <img src="https://img.shields.io/badge/Fork-GitHub-purple?logo=github&logoColor=white&style=for-the-badge" alt="GitHub Fork">
    </a>
-   <a href="https://replit.com/@AmtiXDev/Discord.js-v14-Handler">
+   <a href="https://replit.com/@AmtiXDev/Discordjs-v14-Handler">
       <img src="https://img.shields.io/badge/Fork-Replit-purple?logo=replit&logoColor=white&style=for-the-badge" alt="Replit Fork">
    </a>
 </p>
