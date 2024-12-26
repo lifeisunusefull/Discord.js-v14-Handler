@@ -45,12 +45,18 @@
 
 # Features
 
-- Slash commands and prefix commands with cooldown functionality.
+- Supports both slash commands ( / ) and prefix commands ( custom )
+- Has a global built-in cooldown system
+- Has prefix commands aliases support
+- Easy to configure
+- Easy to maintain
+- Easy to use
+- Wide Customization Options ( Managing cooldown, messages, aliases etc... )
 
 ## Installation & Setup
 
 ```bash
-npm install discord.js @discordjs/rest discord-api-types
+npm install discord.js @discordjs/rest discord-api-types ascii-table humanize-duration
 ```
 
 If you are using [Replit](https://replit.com/), add the following secrets to the environment variables tab (lock icon in sidebar):
@@ -62,9 +68,9 @@ If you are using [Replit](https://replit.com/), add the following secrets to the
 
 ## About
 
-This command handler is developed by AmtiXDev (Discord: amtix#0).
+This command handler is developed by AmtiXDev (Discord: amtix) & iMorganSo (Discord: morgan.so).
 
-**⭐ If you like it, please star my repository! ⭐**
+**⭐ If you like it, please star our repository! ⭐**
 
 _**Please give appropriate credit if you use, modify, or distribute this code.**_
 
@@ -72,11 +78,11 @@ _**Please give appropriate credit if you use, modify, or distribute this code.**
 
 ## Contact && Support
 
-Discord: `amtix#0`
+Discord: `amtix`, `morgan.so`
 
-For any issues or inquiries, feel free to reach out on my Discord server:
+For any issues or inquiries, feel free to reach out on our Discord server:
 
 [![Discord Banner](https://api.weblutions.com/discord/invite/united-developers/)](https://discord.gg/united-developers)
 
 
-For Donate: https://paypal.me/amtixdev (amtixdev@gmail.com).
+For Donation: https://paypal.me/amtixdev (amtixdev@gmail.com).

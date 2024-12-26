@@ -6,9 +6,10 @@ const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBit
 client.commands = new Collection();
 client.slashCommands = new Collection();
 client.cooldowns = new Collection();
+client.aliases = new Collection();
 
 // Handlers
-['commandHandler', 'eventHandler'].forEach(handler => {
+['command', 'event'].forEach(handler => {
   require(`./handlers/${handler}`)(client);
 });
 

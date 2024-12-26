@@ -14,8 +14,10 @@
   "license": "MIT",
   "dependencies": {
     "@discordjs/rest": "^2.3.0",
+    "ascii-table": "^0.0.9",
     "discord-api-types": "^0.37.98",
     "discord.js": "^14.15.3",
-    "fs": "^0.0.1-security"
+    "fs": "^0.0.1-security",
+    "humanize-duration": "^3.32.1"
   }
 }

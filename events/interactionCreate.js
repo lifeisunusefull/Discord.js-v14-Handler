@@ -1,6 +1,6 @@
 const { defaultCooldown } = require('../config.json');
 
-module.exports = async (client, interaction) => {
+module.exports.run = async (client, interaction) => {
   if (!interaction.isCommand()) return;
 
   const command = client.slashCommands.get(interaction.commandName);
@@ -8,12 +8,12 @@ module.exports = async (client, interaction) => {
 
   const { cooldowns } = client;
 
-  if (!cooldowns.has(command.data.name)) {
-    cooldowns.set(command.data.name, new Map());
+  if (!cooldowns.has(command.name)) {
+    cooldowns.set(command.name, new Map());
   }
 
   const now = Date.now();
-  const timestamps = cooldowns.get(command.data.name);
+  const timestamps = cooldowns.get(command.name);
   const cooldownAmount = (command.cooldown || defaultCooldown) * 1000;
 
   if (timestamps.has(interaction.user.id)) {
@@ -21,7 +21,7 @@ module.exports = async (client, interaction) => {
 
     if (now < expirationTime) {
       const timeLeft = (expirationTime - now) / 1000;
-      return interaction.reply({ content: `Please wait ${timeLeft.toFixed(1)} more second(s) before reusing the \`${command.data.name}\` command.`, ephemeral: true });
+      return interaction.reply({ content: `Please wait ${timeLeft.toFixed(1)} more second(s) before reusing the \`${command.name}\` command.`, ephemeral: true });
     }
   }
 

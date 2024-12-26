@@ -1,6 +1,6 @@
 const { prefix, defaultCooldown } = require('../config.json');
 
-module.exports = (client, message) => {
+module.exports.run = (client, message) => {
   if (!message.content.startsWith(prefix) || message.author.bot) return;
 
   const args = message.content.slice(prefix.length).trim().split(/ +/);
@@ -11,6 +11,7 @@ module.exports = (client, message) => {
   if (!command) return;
 
   const { cooldowns } = client;
+  const { aliases } = command;
 
   if (!cooldowns.has(command.name)) {
     cooldowns.set(command.name, new Map());
@@ -31,6 +32,15 @@ module.exports = (client, message) => {
 
   timestamps.set(message.author.id, now);
   setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
+
+  // Aliases Set
+
+  if (command.aliases && !args.length) {
+    args.push(command.aliases);
+    for (const alias of command.aliases) {
+      client.commands.set(alias, command);
+    }
+  }
 
   try {
     command.execute(message, args);
