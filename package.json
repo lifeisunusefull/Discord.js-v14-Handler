@@ -1,6 +1,6 @@
 {
   "name": "discord.js-v14-handler",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -8,9 +8,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "lifeisunusefull"
+    "url": "https://github.com/lifeisunusefull/Discord.js-v14-Handler.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lifeisunusefull/Discord.js-v14-Handler/issues"
   },
   "author": "lifeisunusefull",
+  "contributors": [
+    "AmtiXDev",
+    "iMorganSo"
+  ],
   "license": "MIT",
   "dependencies": {
     "@discordjs/rest": "^2.3.0",
@@ -19,5 +26,12 @@
     "discord.js": "^14.15.3",
     "fs": "^0.0.1-security",
     "humanize-duration": "^3.32.1"
-  }
+  },
+  "keywords": [
+    "discord",
+		"bot",
+		"client",
+		"node",
+		"discordapp"
+  ]
 }
