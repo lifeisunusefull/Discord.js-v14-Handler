@@ -1,5 +1,4 @@
 
-
 <h1 align="center">
    Discord.js v14 Handler
 </h1>
@@ -84,5 +83,49 @@ For any issues or inquiries, feel free to reach out on our Discord server:
 
 [![Discord Banner](https://api.weblutions.com/discord/invite/FqceHDU8QP/)](https://discord.gg/FqceHDU8QP)
 
-
 For Donation: https://paypal.me/amtixdev (amtixdev@gmail.com).
+
+---
+
+## Events Example
+
+The event handler allows you to easily manage and respond to Discord events. Below is an example of how to structure an event file:
+
+```javascript
+module.exports = {
+    event: "event name", // Replace "event name" with the name of the Discord event (e.g., "messageCreate", "guildMemberAdd").
+    run: async (client, ...args) => {
+        // Your event logic goes here
+        console.log(`Event triggered: ${module.exports.event}`);
+    }
+};
+```
+
+### Example: Handling the `ready` Event
+
+Here's a practical example of handling the `ready` event, which triggers when the bot is fully online:
+
+```javascript
+module.exports = {
+    event: "ready",
+    run: async (client) => {
+        console.log(`${client.user.tag} is now online and ready!`);
+    }
+};
+```
+
+### Example: Handling the `messageCreate` Event
+
+Below is an example of how to respond to messages sent in a server:
+
+```javascript
+module.exports = {
+    event: "messageCreate",
+    run: async (client, message) => {
+        if (message.author.bot) return;
+
+        if (message.content.toLowerCase() === "hello") {
+            message.channel.send("Hi there!");
+        }
+    }
+};
