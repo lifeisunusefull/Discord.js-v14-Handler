@@ -82,7 +82,7 @@ Discord: `amtix`, `morgan.so`
 
 For any issues or inquiries, feel free to reach out on our Discord server:
 
-[![Discord Banner](https://api.weblutions.com/discord/invite/united-developers/)](https://discord.gg/united-developers)
+[![Discord Banner](https://api.weblutions.com/discord/invite/https://discord.gg/FqceHDU8QP/)](https://discord.gg/https://discord.gg/FqceHDU8QP)
 
 
 For Donation: https://paypal.me/amtixdev (amtixdev@gmail.com).
