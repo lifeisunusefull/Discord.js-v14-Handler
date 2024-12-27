@@ -1,0 +1,7 @@
+{
+  "token": "Replace with your bot token - if you use replit please read: https://github.com/lifeisunusefull/Discord.js-v14-Handler/tree/main#features",
+  "clientID": "Replace with your bot ID",
+  "prefix": "Replace with your bot prefix",
+  "defaultCooldown": 3,
+  "owners": ["Replace with you Discord ID"]
+}

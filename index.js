@@ -7,11 +7,9 @@ const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
     GatewayIntentBits.GuildMessages,
-    GatewayIntentBits.MessageContent,
+ GatewayIntentBits.MessageContent,
   ],
 });
-
-// Collections
 
 client.commands = new Collection();
 client.slashCommands = new Collection();
