@@ -1,5 +1,3 @@
-
-
 <h1 align="center">
    Discord.js v14 Handler
 </h1>
@@ -76,6 +74,47 @@ _**Please give appropriate credit if you use, modify, or distribute this code.**
 
 ---
 
+## Examples
+
+Creating an event
+
+```js
+module.exports = {
+  event: "PresenceUpdate", // Or you can get the event if you have Events installed from discord.js
+
+  run: async (client, oldPresence, newPresence) => {
+    console.log(
+      `${oldPresenc.user} Updated their presence to ${newPresence.data.activities[1].status}`
+    );
+  },
+};
+```
+
+Creating a prefix command
+
+```js
+module.exports = {
+  name: "help",
+  description: "Displays all commands",
+  aliases: ["he"], // Optional
+  run: async (client, message, args) => {
+    message.channel.send("Hello World!");
+  },
+};
+```
+
+Creating a slash command
+
+```js
+module.exports = {
+  name: "help",
+  description: "Helps you",
+  run: async (client, interaction) => {
+    await interaction.reply("Sup!!");
+  }
+}
+```
+
 ## Contact && Support
 
 Discord: `amtix`, `morgan.so`
@@ -83,6 +122,5 @@ Discord: `amtix`, `morgan.so`
 For any issues or inquiries, feel free to reach out on our Discord server:
 
 [![Discord Banner](https://api.weblutions.com/discord/invite/united-developers/)](https://discord.gg/united-developers)
-
 
 For Donation: https://paypal.me/amtixdev (amtixdev@gmail.com).
