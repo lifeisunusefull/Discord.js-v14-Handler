@@ -1,4 +1,4 @@
-const { Status } = require("discord.js");
+const { ActivityType } = require("discord.js");
 
 // Ready Event Handler
 
@@ -7,7 +7,7 @@ module.exports.run = async (client) => {
   // Set Your App Presence and Activity as you want here
   client.user.setPresence({
     activities: [
-      { name: `Discord.js v14 Handler by AmtiXDev & iMorgaSo`, type: 4 },
+      { name: `Discord.js v14 Handler by AmtiXDev & iMorgaSo`, type: ActivityType.Custom },
     ],
     status: "idle",
   });
