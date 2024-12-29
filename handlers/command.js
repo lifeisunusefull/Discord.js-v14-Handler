@@ -1,9 +1,13 @@
-const fs = require('fs');
-const path = require('path');
-const { REST, Routes, Collection } = require('discord.js');
-const { token, clientID } = require('../config.json');
+const fs = require("fs");
+const path = require("path");
+const { REST, Routes, Collection } = require("discord.js");
+const { token, clientID } = require("../config.json");
+
+// Commands Pathway Handler and Loader
 
 module.exports = (client) => {
+  // Prefix Command Loader
+
   const loadCommands = (dir, collection) => {
     const files = fs.readdirSync(dir);
 
@@ -13,11 +17,11 @@ module.exports = (client) => {
 
       if (stat.isDirectory()) {
         loadCommands(fullPath, collection);
-      } else if (file.endsWith('.js')) {
+      } else if (file.endsWith(".js")) {
         try {
           const command = require(fullPath);
           collection.set(command.name, command);
-          console.log('Successfully registered prefix commands.');
+          console.log("Successfully registered prefix commands.");
         } catch (error) {
           console.error(`Failed to load command file ${file}:`, error);
         }
@@ -25,8 +29,10 @@ module.exports = (client) => {
     }
   };
 
+  // Prefix Loader
+
   client.commands = new Collection();
-  loadCommands(path.join(__dirname, '../commands/prefix'), client.commands);
+  loadCommands(path.join(__dirname, "../commands/prefix"), client.commands);
 
   client.slashCommands = new Collection();
   const slashCommands = [];
@@ -40,7 +46,7 @@ module.exports = (client) => {
 
       if (stat.isDirectory()) {
         loadSlashCommands(fullPath);
-      } else if (file.endsWith('.js')) {
+      } else if (file.endsWith(".js")) {
         try {
           const command = require(fullPath);
           client.slashCommands.set(command.name, command);
@@ -52,23 +58,26 @@ module.exports = (client) => {
     }
   };
 
-  loadSlashCommands(path.join(__dirname, '../commands/slash'));
+  // Slash Command Loader
 
-  const rest = new REST({ version: '10' }).setToken(token || process.env.token);
+  loadSlashCommands(path.join(__dirname, "../commands/slash"));
+
+  const rest = new REST({ version: "10" }).setToken(token || process.env.token);
   (async () => {
     try {
-      const existingCommands = await rest.get(Routes.applicationCommands(clientID));
+      const existingCommands = await rest.get(
+        Routes.applicationCommands(clientID)
+      );
       for (const command of existingCommands) {
         await rest.delete(Routes.applicationCommand(clientID, command.id));
       }
 
-      await rest.put(
-        Routes.applicationCommands(clientID),
-        { body: slashCommands },
-      );
-      console.log('Successfully registered slash commands.');
+      await rest.put(Routes.applicationCommands(clientID), {
+        body: slashCommands,
+      });
+      console.log("Successfully registered slash commands.");
     } catch (error) {
-      console.error('Error registering slash commands:', error);
+      console.error("Error registering slash commands:", error);
     }
   })();
 };

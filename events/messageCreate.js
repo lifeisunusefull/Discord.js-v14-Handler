@@ -1,4 +1,6 @@
-const { prefix, defaultCooldown } = require('../config.json');
+const { prefix, defaultCooldown } = require("../config.json");
+
+// MessageCreate Event Handler
 
 module.exports.run = (client, message) => {
   if (!message.content.startsWith(prefix) || message.author.bot) return;
@@ -10,12 +12,18 @@ module.exports.run = (client, message) => {
 
   if (!command) return;
 
+  // Cooldowns and aliases adientifiers
+
   const { cooldowns } = client;
   const { aliases } = command;
+
+  // Mapping cooldowns
 
   if (!cooldowns.has(command.name)) {
     cooldowns.set(command.name, new Map());
   }
+
+  // Cooldowns handler
 
   const now = Date.now();
   const timestamps = cooldowns.get(command.name);
@@ -26,14 +34,18 @@ module.exports.run = (client, message) => {
 
     if (now < expirationTime) {
       const timeLeft = (expirationTime - now) / 1000;
-      return message.reply(`please wait ${timeLeft.toFixed(1)} more second(s) before reusing the \`${command.name}\` command.`);
+      return message.reply(
+        `please wait ${timeLeft.toFixed(
+          1
+        )} more second(s) before reusing the \`${command.name}\` command.`
+      );
     }
   }
 
   timestamps.set(message.author.id, now);
   setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
 
-  // Aliases Set
+  // Aliases Set Handler
 
   if (command.aliases && !args.length) {
     args.push(command.aliases);
@@ -43,9 +55,10 @@ module.exports.run = (client, message) => {
   }
 
   try {
+    // Command execution
     command.execute(message, args);
   } catch (error) {
     console.error(error);
-    message.reply('There was an error while executing that command!');
+    message.reply("There was an error while executing that command!");
   }
 };

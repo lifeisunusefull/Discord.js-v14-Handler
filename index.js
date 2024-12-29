@@ -1,12 +1,14 @@
-const { Client, GatewayIntentBits, Collection } = require('discord.js');
-const { token } = require('./config.json');
+const { Client, GatewayIntentBits, Collection } = require("discord.js");
+const { token } = require("./config.json");
+
+// Create the client, set the intents that you need
 
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
     GatewayIntentBits.GuildMessages,
-    GatewayIntentBits.MessageContent
-  ]
+ GatewayIntentBits.MessageContent,
+  ],
 });
 
 client.commands = new Collection();
@@ -14,9 +16,12 @@ client.slashCommands = new Collection();
 client.cooldowns = new Collection();
 client.aliases = new Collection();
 
-// Handlers
-['command', 'event'].forEach(handler => {
+// App Handlers
+
+["command", "event"].forEach((handler) => {
   require(`./handlers/${handler}`)(client);
 });
+
+// Login with the token of the client
 
 client.login(token || process.env.token);
