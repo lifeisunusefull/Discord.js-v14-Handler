@@ -1,4 +1,4 @@
-const { Client, GatewayIntentBits, Collection } = require("discord.js");
+const { Client, GatewayIntentBits, Partials, Collection } = require("discord.js");
 const { token } = require("./config.json");
 
 // Create the client, set the intents that you need
@@ -9,6 +9,7 @@ const client = new Client({
     GatewayIntentBits.GuildMessages,
     GatewayIntentBits.MessageContent
   ],
+  partials: [Partials.Message, Partials.Channel]
 });
 
 client.commands = new Collection();
